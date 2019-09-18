@@ -1,3 +1,4 @@
+package com.employeeApp.Services;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class EmpService {
+import com.employeeApp.Structures.*;
+
+public class EmployeeServices {
 	List<Employee> empList = new ArrayList<Employee>();
 	public void getInput() {
 		Scanner sc=new Scanner(System.in);

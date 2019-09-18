@@ -1,9 +1,10 @@
 
-public class Main {
+import com.employeeApp.Services.*;
+public class EmployeeMain {
 
 	public static void main(String[] args) {
 		
-		EmpService e = new EmpService();
+		EmployeeServices e = new EmployeeServices();
 		e.getInput();
 
 	}

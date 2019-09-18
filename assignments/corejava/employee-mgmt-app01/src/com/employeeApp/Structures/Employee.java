@@ -1,3 +1,4 @@
+package com.employeeApp.Structures;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
