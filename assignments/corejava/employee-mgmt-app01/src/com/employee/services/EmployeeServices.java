@@ -1,4 +1,4 @@
-package com.employeeApp.Services;
+package com.employee.services;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.employeeApp.Structures.*;
+import com.employee.structures.*;
 
 public class EmployeeServices {
 	List<Employee> empList = new ArrayList<Employee>();
@@ -106,7 +106,7 @@ public class EmployeeServices {
 	}
 	public void exportEmp() {
 		try {
-			FileOutputStream fileOut = new FileOutputStream("C:\\Training\\ibm-fsd-backend\\assignments\\corejava\\employee-mgmt-app01\\newFile.txt");
+			FileOutputStream fileOut = new FileOutputStream("C:\\Training\\ibm-fsd-backend\\assignments\\corejava\\employee-mgmt-app01\\src\\newFile.txt");
 			empList.forEach(e->{
 				try {
 					String objlist = String.format("%d,%s,%d,%s,%s,%s", e.getId(),e.getName(),e.getAge(),e.getDesign(),e.getDept(),e.getCountry());
@@ -128,7 +128,7 @@ public class EmployeeServices {
 	public void importEmp() {
 		Scanner s= new Scanner(System.in);
         try {
-        	s = new Scanner(new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Training\\ibm-fsd-backend\\assignments\\corejava\\employee-mgmt-app01\\newFile.txt"))));
+        	s = new Scanner(new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Training\\ibm-fsd-backend\\assignments\\corejava\\employee-mgmt-app01\\src\\newFile.txt"))));
         	
             while (s.hasNextLine()) {
 		        String[] empArr = s.nextLine().split(",");    	

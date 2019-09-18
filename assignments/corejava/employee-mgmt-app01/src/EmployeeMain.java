@@ -1,5 +1,5 @@
 
-import com.employeeApp.Services.*;
+import com.employee.services.*;
 public class EmployeeMain {
 
 	public static void main(String[] args) {
