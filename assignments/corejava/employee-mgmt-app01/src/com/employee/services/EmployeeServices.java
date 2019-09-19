@@ -6,55 +6,154 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import com.employee.structures.*;
 
 public class EmployeeServices {
 	List<Employee> empList = new ArrayList<Employee>();
 	public void getInput() {
-		Scanner sc=new Scanner(System.in);
-		int choice;
+		
+		int choice = 0;
 		do {
-			System.out.println("Enter 1 to add, 2 to view, 3 to update, 4 to delete, 5 to view all, 6 to import, 7 to export, 10 to exit");
-			choice = sc.nextInt();
-			switch(choice) {
-				case 1:
-					addNewEmp();
-					break;
-				case 2:
-					System.out.println("Enter Emp Id");
-					int x= sc.nextInt();
-					view(x);
-					break;
-				case 3:
-					System.out.println("Enter Emp Id");
-					x= sc.nextInt();
-					update(x);
-					break;
-				case 4:
-					System.out.println("Enter Emp Id");
-					x= sc.nextInt();
-					delete(x);
-					break;
-				case 5:
-					viewAll();
-					break;
-				case 6:
-					importEmp();
-					break;
-				case 7:
-					exportEmp();
-					break;
-				case 10:
-					System.out.println("Exiting...");
-					break;
-				default:
-					System.out.println("Invalid entry please try again!!");
+			try {
+				Scanner sc=new Scanner(System.in);
+				System.out.println("Enter 1 to add, 2 to view, 3 to update, 4 to delete, 5 to view all, 6 to import, 7 to export, 10 to exit");
+				choice = sc.nextInt();
+				
+				switch(choice) {
+					case 1:
+						try {
+							addNewEmp();
+						}
+						catch(InputMismatchException iME)
+						{
+							System.out.println("Please Enter a numeric Value");
+						}
+						break;
+					case 2:
+						try {
+							System.out.println("Enter Emp Id");
+							int x= sc.nextInt();
+							view(x);
+							}
+						catch(InputMismatchException iME1)
+						{
+							System.out.println("Please Enter a numeric Value");
+						}
+						
+						break;
+					case 3:
+						try {
+							System.out.println("Enter Emp Id");
+							int x= sc.nextInt();
+							update(x);
+							}
+						catch(InputMismatchException iME1)
+						{
+							System.out.println("Please Enter a numeric Value");
+						}
+						
+						break;
+					case 4:
+						try {
+							System.out.println("Enter Emp Id");
+							int x= sc.nextInt();
+							delete(x);
+							}
+						catch(InputMismatchException iME1)
+						{
+							System.out.println("Please Enter a numeric Value");
+						}
+						
+						break;
+					case 5:
+						viewAll();
+						break;
+					case 6:
+						class Sample implements Callable<String>
+						{							
+							public String call() throws Exception 
+							{							
+								importEmp();						
+								return "Successfully Imported";						
+														
+							}
+						}						
+						
+						Callable<String> c1 = new Sample();
+						
+						ExecutorService e = Executors.newFixedThreadPool(1);
+						
+						Future f =  e.submit(c1);
+						
+						while(!f.isDone())
+						{
+							String s =null;
+							try {
+								s=(String) f.get();
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (ExecutionException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							System.out.println(s);							
+							e.shutdown();
+						}
+						
+						break;
+					case 7:
+						class Sample implements Callable<String>{							
+							public String call() throws Exception {								
+								exportEmp();						
+								return "Successfully Exported";							
+							}
+						}
+												
+						Callable<String> c2 = new Sample();
+						
+						ExecutorService e1 = Executors.newFixedThreadPool(1);
+						
+						Future f2 =  e1.submit(c2);
+						
+						while(!f2.isDone())
+						{
+							String s =null;
+							try {
+								s=(String) f2.get();
+							} catch (InterruptedException e2) {
+								// TODO Auto-generated catch block
+								e2.printStackTrace();
+							} catch (ExecutionException e2) {
+								// TODO Auto-generated catch block
+								e2.printStackTrace();
+							}
+							System.out.println(s);
+						
+							e1.shutdown();			
+
+						}
+						
+						break;
+					case 10:
+						System.out.println("Exiting...");
+						break;
+				}
 			}
-			
+			catch(InputMismatchException iME)
+			{
+				System.out.println("Please Enter a numeric Value");
+			}
 			
 		}while(choice!=10);
 	}
@@ -119,7 +218,10 @@ public class EmployeeServices {
 			});
 			fileOut.close();
 		}
-		catch (IOException i){
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}catch (IOException i){
 			i.printStackTrace();
 		}
 		
