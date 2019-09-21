@@ -1,5 +1,0 @@
-11,athul,22,manager,IT,India
-22,arjun,22,manager,FSD,india
-33,hari,22,manager,SAP,india
-44,nakul,22,manager,FSD,india
-88,test,33,testw,teste,test

@@ -1,13 +1,13 @@
 package com.employee.structures;
-import java.io.Serializable;
 
-public class Employee implements Serializable {
-	String name;
-	int age;
-	int id;
-	String design;
-	String dept;
-	String country;
+
+public class Employee {
+	private String name;
+	private int age;
+	private int id;
+	private String design;
+	private String dept;
+	private String country;
 	
 	
 	public String getName() {
@@ -46,6 +46,11 @@ public class Employee implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Employee(int id, String name, int age, String design, String dept, String country) {
 		super();
 		this.id= id;
@@ -55,9 +60,10 @@ public class Employee implements Serializable {
 		this.dept = dept;
 		this.country = country;
 	}
+	
 	@Override
 	public String toString() {
-		return "Employee [id= " + id + ", name= " + name + ", age= " + age + ", Total designation=" + design + ", department= " + dept + ", country= " + country+ "]\n";
+		return "Employee [id= " + id + ", name= " + name + ", age= " + age + ", designation= " + design + ", department= " + dept + ", country= " + country+ "]\n";
 	}
 		
 

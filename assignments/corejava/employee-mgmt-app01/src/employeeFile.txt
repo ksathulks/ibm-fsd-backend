@@ -1,0 +1,4 @@
+1,athul,22,manager,fsd,india
+2,hari,22,developer,fsd,india
+3,seth,22,consultant,sap,india
+4,arjunmanu,22,frontend,fsd,indian
