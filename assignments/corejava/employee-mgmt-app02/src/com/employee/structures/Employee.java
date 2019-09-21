@@ -45,6 +45,11 @@ public class Employee{
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Employee(int id, String name, int age, String design, String dept, String country) {
 		super();
 		this.id= id;
@@ -56,7 +61,7 @@ public class Employee{
 	}
 	@Override
 	public String toString() {
-		return "Employee [id= " + id + ", name= " + name + ", age= " + age + ", Total designation=" + design + ", department= " + dept + ", country= " + country+ "]\n";
+		return "Employee [id= " + id + ", name= " + name + ", age= " + age + ", designation= " + design + ", department= " + dept + ", country= " + country+ "]\n";
 	}
 		
 
