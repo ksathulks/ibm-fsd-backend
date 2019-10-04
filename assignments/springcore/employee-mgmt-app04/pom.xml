@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.employee.spring.core</groupId>
+  <artifactId>employee-mgmt-app04</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>employee-mgmt-app04</name>
+  <description>employee-mgmt-app04</description>
+  	<properties>
+		<org.springframework-version>5.1.9.RELEASE</org.springframework-version>
+		<java-version>8</java-version>		
+	</properties>
+
+	<dependencies>
+
+		<!-- Spring Context -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.46</version>
+		</dependency>
+		
+	</dependencies>
+	<build>
+		<finalName>employee-mgmmt-app04</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
